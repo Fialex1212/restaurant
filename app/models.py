@@ -15,3 +15,25 @@ class BookTabel(models.Model):
 
     def __str__(self):
         return f"{self.name}, {self.phone_number}, {self.date}, {self.time}"
+
+
+class CategoryOfDish(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title
+
+
+class Dish(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    price = models.IntegerField()
+    category = models.ForeignKey(
+        CategoryOfDish, on_delete=models.CASCADE, related_name="dishes"
+    )
+    image = models.ImageField(upload_to="uploads/dishes")
+
+    def __str__(self):
+        return f"{self.title}, {self.price}"
