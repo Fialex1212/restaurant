@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import (
+    BookTabel
+)
 
-# Register your models here.
+admin.site.register(BookTabel)
