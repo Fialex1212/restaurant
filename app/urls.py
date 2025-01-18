@@ -5,7 +5,8 @@ from .views import (
     blog,
     ivents,
     profile,
-    about
+    about,
+    book_table
 )
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path("ivents/", ivents, name="ivents"),
     path("profile/", profile, name="profile"),
     path("about/", about, name="about"),
+    path('submit-booking', book_table, name='submit_booking'),
 ]

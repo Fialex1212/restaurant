@@ -5,14 +5,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} Base title {% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    {% block css %} {% endblock %}
   </head>
   <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <div class="logo">
+            <a href="/"> LOGO </a>
+          </div>
+          <nav class="header__navbar">
+            <ul class="navbar__list">
+              <li class="list__item">
+                <a class="list__link" href="/">menu</a>
+              </li>
+              <li class="list__item">
+                <a class="list__link" href="/ivents">ivents</a>
+              </li>
+              <li class="list__item">
+                <a class="list__link" href="/blog">blog</a>
+              </li>
+              <li class="list__item">
+                <a class="list__link" href="/profile">profile</a>
+              </li>
+            </ul>
+          </nav>
+          <button id="openPopupBtn" class="popup__button">Book a table</button>
+        </div>
+      </div>
+    </header>
+    {% include "popup.html" %}
     <main>
       {% block content %}
       <h1>Wellcome back, {{ name}}</h1>
       main content {% endblock %}
     </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="header__inner">
+          <div class="logo">
+            <a href="/"> LOGO </a>
+          </div>
+          <nav class="header__navbar">
+            <ul class="navbar__list">
+              <li class="list__item">
+                <a class="list__link" href="/">menu</a>
+              </li>
+              <li class="list__item">
+                <a class="list__link" href="/ivents">ivents</a>
+              </li>
+              <li class="list__item">
+                <a class="list__link" href="/blog">blog</a>
+              </li>
+              <li class="list__item">
+                <a class="list__link" href="/profile">profile</a>
+              </li>
+            </ul>
+          </nav>
+          <button id="openPopupBtn" class="popup__button">Book a table</button>
+        </div>
+      </div>
+    </footer>
   </body>
   <script src="{% static 'js/scripts.js' %}"></script>
 </html>

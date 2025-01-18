@@ -1,7 +1,30 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block css %}
+{%load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content%}
+<div class="container">
+  <ul>
+    {% for category in categories %}
+    <li class="{{ category.title|slugify }} category">
+      <h2 class="category__title">{{ category.title }}</h2>
+      <ul class="category__list">
+        {% for dish in category.dishes.all %}
+        <li class="dish">
+          <img
+            class="dish__img"
+            src="{{ dish.image.url }}"
+            alt="{{ dish.title }}"
+          />
+          <div class="dish__info">
+            <h3 class="dish__tilte">{{ dish.title }}</h3>
+            <p>   ${{ dish.price }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
 
-{% block title %}Home{% endblock %}
-
-{% block content %}
-  <p>This is the home page.</p>
 {% endblock %}
