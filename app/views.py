@@ -7,28 +7,21 @@ def base(request):
     context = {"name": "Alex"}
     return render(request, "base.html", context)
 
-
 def home(request):
     categories = CategoryOfDish.objects.prefetch_related("dishes").all()
     context = {"categories": categories}
-    return render(request, "home.html", context)
+    return render(request, "./home/index.html", context)
 
 
-def blog(request):
-    return render(request, "blog.html")
-
-
-def ivents(request):
-    return render(request, "ivents.html")
+def menu(request):
+    categories = CategoryOfDish.objects.prefetch_related("dishes").all()
+    context = {"categories": categories}
+    return render(request, "./menu/index.html", context)
 
 
 def profile(request):
     context = {"username": "Alex"}
-    return render(request, "profile.html", context)
-
-
-def about(request):
-    return render(request, "about.html")
+    return render(request, "./profile/index.html", context)
 
 
 def book_table(request):
@@ -49,4 +42,4 @@ def book_table(request):
             comment=comment,
         )
 
-        return HttpResponse("succesfully created")  
+        return HttpResponse("succesfully created")

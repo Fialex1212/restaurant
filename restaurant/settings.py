@@ -20,7 +20,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app",
+    "authapp",
 ]
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/auth/login/'
+AUTH_USER_MODEL = 'authapp.CustomUser'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

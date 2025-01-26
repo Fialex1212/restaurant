@@ -1,20 +1,13 @@
-from django.urls import path
-from .views import (
-    base,
-    home,
-    blog,
-    ivents,
-    profile,
-    about,
-    book_table
-)
+from django.urls import path, include
+from . import views
 
 urlpatterns = [
-    path("base/", base, name="base"),
-    path("", home, name="home"),
-    path("blog/", blog, name="blog"),
-    path("ivents/", ivents, name="ivents"),
-    path("profile/", profile, name="profile"),
-    path("about/", about, name="about"),
-    path('submit-booking', book_table, name='submit_booking'),
+    path("base/", views.base, name="base"),
+    path("", views.home, name="home"),
+    path("menu/", views.menu, name="menu"),
+    path("profile/", views.profile, name="profile"),
+    path("submit-booking", views.book_table, name="submit_booking"),
+    path("auth/", include("authapp.urls"))
+    
 ]
+
