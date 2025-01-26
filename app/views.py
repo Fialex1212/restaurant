@@ -1,11 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
+from rest_framework import status
 from .models import CategoryOfDish, BookTabel
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import CategoryOfDish, Dish
+from .serializers import CategoryOfDishSerializer, DishSerializer
+from django.contrib.auth.decorators import login_required
 
 
 def base(request):
     context = {"name": "Alex"}
     return render(request, "base.html", context)
+
 
 def home(request):
     categories = CategoryOfDish.objects.prefetch_related("dishes").all()
@@ -19,8 +26,18 @@ def menu(request):
     return render(request, "./menu/index.html", context)
 
 
+def dish_detail(request, id):
+    dish = get_object_or_404(Dish, id=id)
+    return render(request, "./dish_detail/index.html", {"dish": dish})
+
+def delivery(request):
+    return render(request, "./delivery/index.html")
+
+
+@login_required(login_url="/auth/login")
 def profile(request):
-    context = {"username": "Alex"}
+    username = request.user.username
+    context = {"username": username}
     return render(request, "./profile/index.html", context)
 
 
@@ -43,3 +60,18 @@ def book_table(request):
         )
 
         return HttpResponse("succesfully created")
+
+
+class CategoryOfDishList(APIView):
+    def get(self, request):
+        categories = CategoryOfDish.objects.all()
+        serializer = CategoryOfDishSerializer(categories, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+class DishList(APIView):
+    def get(self, request):
+        dishes = Dish.objects.all()
+        serializer = DishSerializer(dishes, many=True)
+        return Response(serializer.data)

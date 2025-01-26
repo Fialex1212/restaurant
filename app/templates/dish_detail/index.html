@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} 
+{% block css %}
+{%load static %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+{% endblock %} 
+{% block content%}
+<div class="container">
+  Dish detail page
+  <div class="dish-detail">
+    <h1>{{ dish.title }}</h1>
+    <img
+    class="dish__img"
+    src="{{ dish.image.url }}"
+    alt="{{ dish.title }}"
+/>
+    <p>Price: ${{ dish.price }}</p>
+    <p>Description: {{ dish.description }}</p>
+  </div>
+</div>
+
+{% endblock %}

@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
 def login_user(request):
@@ -42,7 +43,7 @@ def register_user(request):
             messages.error(request, "Passwords do not match.")
     return render(request, "./auth/register.html")
 
-
+@login_required(login_url="/auth/login")
 def logout_user(request):
     logout(request)
     messages.success(request, "Logged out successfully!")
