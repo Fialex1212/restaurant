@@ -5,6 +5,7 @@ urlpatterns = [
     path("base/", views.base, name="base"),
     path("", views.home, name="home"),
     path("menu/", views.menu, name="menu"),
+    path("menu/<str:category>/", views.menu, name="menu_by_category"),
     path("dish_detail/<str:id>", views.dish_detail, name="dish_detail"),
     path("delivery/", views.delivery, name="delivery"),
     path("profile/", views.profile, name="profile"),

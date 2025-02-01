@@ -1,34 +1,45 @@
-{% extends "base.html" %} 
-{% block title %}Home{% endblock %} 
-{% block css %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block css %}
 {%load static %}
 <link rel="stylesheet" href="{% static 'css/menu.css' %}" />
 {% endblock %} {% block content%}
 <div class="container">
-    <ul>
-        {% for category in categories %}
-        <li class="{{ category.title|slugify }} category">
-          <h2 class="category__title">{{ category.title }}</h2>
-          <ul class="category__list">
-            {% for dish in category.dishes.all %}
-            <li class="dish">
-                <a href="{% url 'dish_detail' dish.id %}">
-                    <img
-                    class="dish__img"
-                    src="{{ dish.image.url }}"
-                    alt="{{ dish.title }}"
-                />
-                <div class="dish__info">
-                    <h3 class="dish__tilte">{{ dish.title }}</h3>
-                    <p>   ${{ dish.price }}</p>
-                </div>
-                </a>
-            </li>
-            {% endfor %}
-          </ul>
+  <div class="menu__wrapper">
+    <div class="menu__categories">
+      <ul class="categories__list">
+        <li>
+          <a class="category__title" href="{% url 'menu' %}"> All menu </a>
+        </li>
+        {% for cat in categories %}
+        <li>
+          <a class="category__title" href="{% url 'menu_by_category' cat.title %}"> {{ cat.title }} </a>
         </li>
         {% endfor %}
       </ul>
+    </div>
+    <div class="menu__dishes">
+      <ul class="dishes__list">
+        {% if dishes %} {% for dish in dishes %}
+        <li class="dish">
+          <a href="{% url 'dish_detail' dish.id %}">
+            <div class="img__wrapper">
+              <img
+                class="dish__img"
+                src="{{ dish.image.url }}"
+                alt="{{ dish.title }}"
+              />
+            </div>
+            <div class="dish__info">
+              <h3 class="dish__tilte">{{ dish.title }}</h3>
+              <p>${{ dish.price }}</p>
+            </div>
+          </a>
+        </li>
+        {% endfor %} {% else %}
+        <p>No dishes available for this category.</p>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

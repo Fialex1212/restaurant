@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404, render
 from django.http import HttpResponse
 from rest_framework import status
 from .models import CategoryOfDish, BookTabel
@@ -20,15 +20,22 @@ def home(request):
     return render(request, "./home/index.html", context)
 
 
-def menu(request):
+def menu(request, category=None):
     categories = CategoryOfDish.objects.prefetch_related("dishes").all()
-    context = {"categories": categories}
+
+    if category:
+        dishes = get_list_or_404(Dish, category__title=category)
+    else:
+        dishes = Dish.objects.all()
+
+    context = {"categories": categories, "dishes": dishes}
     return render(request, "./menu/index.html", context)
 
 
 def dish_detail(request, id):
     dish = get_object_or_404(Dish, id=id)
     return render(request, "./dish_detail/index.html", {"dish": dish})
+
 
 def delivery(request):
     return render(request, "./delivery/index.html")
@@ -67,7 +74,6 @@ class CategoryOfDishList(APIView):
         categories = CategoryOfDish.objects.all()
         serializer = CategoryOfDishSerializer(categories, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 
 class DishList(APIView):
