@@ -21,8 +21,17 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "app",
     "authapp",
-    "rest_framework"
+    "rest_framework",
+    'captcha',
+    'django_recaptcha',
 ]
+
+RECAPTCHA_PUBLIC_KEY = "6LdaK80qAAAAAGlxYwTWNQQTO49SYX5yOoxf"
+# os.environ.get("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = "6LdaK80qAAAAAIoYCrii4NakV50kB02Abuw3YfEj"
+# os.environ.get("RECAPTCHA_PRIVATE_KEY")
+RECAPTCHA_REQUIRED_SCORE = 0.85
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/auth/login/'

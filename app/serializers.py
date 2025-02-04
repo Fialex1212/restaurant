@@ -7,7 +7,7 @@ class CategoryOfDishSerializer(serializers.ModelSerializer):
         fields = ['id', 'title']
 
 class DishSerializer(serializers.ModelSerializer):
-    category = CategoryOfDishSerializer()  # Вложенный сериализатор категории
+    category = CategoryOfDishSerializer()
 
     class Meta:
         model = Dish

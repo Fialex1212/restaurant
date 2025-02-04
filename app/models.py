@@ -5,11 +5,11 @@ import uuid
 
 class BookTabel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=16)
-    number_of_guests = models.IntegerField()
-    date = models.DateField()
-    time = models.TimeField()
+    name = models.CharField(max_length=100, verbose_name="Name")
+    phone = models.CharField(max_length=16, verbose_name="Phone Number")
+    date = models.DateField(verbose_name="Date")
+    time = models.TimeField(verbose_name="Time")
+    guests = models.PositiveIntegerField(verbose_name="Number of Guests")
     comment = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

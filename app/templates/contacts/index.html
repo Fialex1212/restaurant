@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Delivery Terms</h1>
+  <h2>Оставьте заявку, и мы вам перезвоним</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <p style="color: green">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+  </form>
+</div>
+{% endblock %}

@@ -9,6 +9,8 @@ urlpatterns = [
     path("dish_detail/<str:id>", views.dish_detail, name="dish_detail"),
     path("delivery/", views.delivery, name="delivery"),
     path("profile/", views.profile, name="profile"),
+    path("about/", views.about, name="about"),
+    path("contacts/", views.contacts, name="contacts"),
     path("submit-booking", views.book_table, name="submit_booking"),
     path("auth/", include("authapp.urls")),
     path('api/categories/', views.CategoryOfDishList.as_view(), name='category-list'),

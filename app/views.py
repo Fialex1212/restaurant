@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.http import HttpResponse
 from rest_framework import status
 from .models import CategoryOfDish, BookTabel
@@ -7,6 +7,13 @@ from rest_framework.response import Response
 from .models import CategoryOfDish, Dish
 from .serializers import CategoryOfDishSerializer, DishSerializer
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .forms import CallbackForm
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.contrib import messages
+from .forms import BookingForm
+
 
 
 def base(request):
@@ -48,25 +55,39 @@ def profile(request):
     return render(request, "./profile/index.html", context)
 
 
-def book_table(request):
+def about(request):
+    return render(request, "./about/index.html")
+
+
+def contacts(request):
     if request.method == "POST":
-        name = request.POST["name"]
-        phone_number = request.POST["phone"]
-        number_of_guests = request.POST["guests"]
-        date = request.POST["date"]
-        time = request.POST["time"]
-        comment = request.POST.get("comment", "")
+        form = CallbackForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            phone = form.cleaned_data["phone"]
+            # Example: Save to database or send an email
+            # CallbackRequest.objects.create(name=name, phone=phone)
+            messages.success(request, "Ваша заявка принята! Мы вам перезвоним.")
+            return redirect("contacts")
+        else:
+            messages.error(request, "Пожалуйста, исправьте ошибки в форме.")
+    else:
+        form = CallbackForm()
+    return render(request, "./contacts/index.html", {"form": form})
 
-        BookTabel.objects.create(
-            name=name,
-            phone_number=phone_number,
-            number_of_guests=number_of_guests,
-            date=date,
-            time=time,
-            comment=comment,
-        )
 
-        return HttpResponse("succesfully created")
+def book_table(request):
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()  # Сохраняем данные в базу
+            messages.success(request, "Your booking has been submitted successfully!")
+            return JsonResponse({'status': 'success', 'message': 'Booking submitted successfully!'})
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse({'status': 'error', 'errors': errors}, status=400)
+    else:
+        form = BookingForm()
 
 
 class CategoryOfDishList(APIView):
