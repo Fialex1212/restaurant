@@ -1,11 +1,62 @@
-{% extends "base.html" %} 
-{% block title %}Home{% endblock %} 
-{% block css %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} 
+{% block css%}
 {%load static %}
+<!-- Link Swiper's CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-{% endblock %} {% block content%}
+{% endblock %} 
+{% block content%}
+
 <div class="container">
-  Home page
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <div class="cards">
+    <ul class="card__list">
+      <li class="card__item">
+        <div class="card__item-img-wrapper">
+          Img <!-- delete when use img -->
+          <img class="card__item-img" src="" alt="">
+        </div>
+        <p class="card__item-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
+          odit voluptate, dolore obcaecati corporis accusamus facere ut ex?
+          Eligendi.
+        </p>
+      </li>
+      <li class="card__item">
+        <div class="card__item-img-wrapper">
+          Img <!-- delete when use img -->
+          <img class="card__item-img" src="" alt="">
+        </div>
+        <p class="card__item-description">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
+          odit voluptate, dolore obcaecati corporis accusamus facere ut ex?
+          Eligendi.
+        </p>
+      </li>
+    </ul>
+  </div>
 </div>
 
+<!-- Initialize Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    loop: true,
+  });
+</script>
 {% endblock %}

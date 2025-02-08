@@ -44,8 +44,8 @@ def dish_detail(request, id):
     return render(request, "./dish_detail/index.html", {"dish": dish})
 
 
-def delivery(request):
-    return render(request, "./delivery/index.html")
+def basket(request):
+    return render(request, "./basket/index.html")
 
 
 @login_required(login_url="/auth/login")
