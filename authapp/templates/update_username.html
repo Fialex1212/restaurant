@@ -1,0 +1,8 @@
+<form method="POST">
+  {% csrf_token %}
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" value="{{ user.username }}" required />
+  </div>
+  <button type="submit">Update</button>
+</form>

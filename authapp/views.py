@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 
 def login_user(request):
@@ -51,3 +53,53 @@ def logout_user(request):
     return redirect("login")
 
 
+@login_required(login_url="/auth/login")
+def update_email(request):
+    user = request.user
+    if request.method == "POST":
+        new_email = request.POST["email"]
+        if (
+            new_email != user.email
+            and get_user_model().objects.filter(email=new_email).exists()
+        ):
+            messages.error(request, "Email already in use.")
+        else:
+            user.email = new_email
+            user.save()
+            messages.success(request, "Your email has been updated.")
+            return redirect("profile-settings")
+    return render(request, "./update_email.html")
+
+
+@login_required(login_url="/auth/login")
+def update_username(request):
+    user = request.user
+    if request.method == "POST":
+        new_username = request.POST["username"]
+        if (
+            new_username != user.username
+            and get_user_model().objects.filter(email=new_username).exists()
+        ):
+            messages.error(request, "Username already in use.")
+        else:
+            user.username = new_username
+            user.save()
+            messages.success(request, "Your username has been updated.")
+            return redirect("profile-settings")
+    return render(request, "./update_username.html")
+
+
+@login_required(login_url="/auth/login")
+def update_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, "Your password has been updated.")
+            return redirect("profile-settings")
+        else:
+            messages.error(request, "Please correct the error below.")
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, "./update_password.html")

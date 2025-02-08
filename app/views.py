@@ -111,11 +111,10 @@ def my_orders(request):
 
 @login_required(login_url="/auth/login")
 def profile_settings(request):
-    orders = Order.objects.filter(user=request.user)
 
-    context = {"orders": orders, "user": request.user}
+    context = {"user": request.user}
 
-    return render(request, "./profile/orders.html", context)
+    return render(request, "./profile/settings.html", context)
 
 
 def delivery_trems(request):
