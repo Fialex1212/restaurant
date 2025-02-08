@@ -4,8 +4,11 @@ import logging
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 from .models import CategoryOfDish, Dish, Order, OrderItem, ContactUs
 from .forms import CallbackForm, BookingForm
@@ -83,9 +86,13 @@ def contacts(request):
         if form.is_valid():
             name = form.cleaned_data["name"]
             phone = form.cleaned_data["phone"]
-            message = form.cleaned_data["message"]  
-            contact_us = ContactUs.objects.create(name=name, phone=phone, message=message)
-            messages.success(request, "Your request has been accepted! We will call you back.")
+            message = form.cleaned_data["message"]
+            contact_us = ContactUs.objects.create(
+                name=name, phone=phone, message=message
+            )
+            messages.success(
+                request, "Your request has been accepted! We will call you back."
+            )
             logger.info(f"Callback request received: {name}, {phone}")
             return redirect("contacts")
         else:
@@ -140,3 +147,55 @@ def book_table(request):
     else:
         form = BookingForm()
     return render(request, "book_table.html", {"form": form})
+
+
+@login_required(login_url="/auth/login")
+def update_email(request):
+    user = request.user
+    if request.method == "POST":
+        new_email = request.POST["email"]
+        if (
+            new_email != user.email
+            and get_user_model().objects.filter(email=new_email).exists()
+        ):
+            messages.error(request, "Email already in use.")
+        else:
+            user.email = new_email
+            user.save()
+            messages.success(request, "Your email has been updated.")
+            return redirect("profile-settings")
+    return render(request, "./profile/update_email.html")
+
+
+@login_required(login_url="/auth/login")
+def update_username(request):
+    user = request.user
+    if request.method == "POST":
+        new_username = request.POST["username"]
+        if (
+            new_username != user.username
+            and get_user_model().objects.filter(email=new_username).exists()
+        ):
+            messages.error(request, "Username already in use.")
+        else:
+            user.username = new_username
+            user.save()
+            messages.success(request, "Your username has been updated.")
+            return redirect("profile-settings")
+    return render(request, "./profile/update_username.html")
+
+
+@login_required(login_url="/auth/login")
+def update_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, "Your password has been updated.")
+            return redirect("profile-settings")
+        else:
+            messages.error(request, "Please correct the error below.")
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, "./profile/update_password.html")

@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block title %}Profile of {{
+user.username}}{%endblock %} {% block css %} {%load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock %} {% block content %}
+<div class="container">
+  <div class="user user__updated">
+    <form class="form" method="POST">
+      {% csrf_token %}
+      <label class="input__wrapper">
+        <label for="email">New Email</label
+        ><input
+          class="form__input"
+          type="email"
+          name="email"
+          value="{{ user.email }}"
+          required
+      /></label>
+      <button class="form__button" type="submit">Update Email</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+<!-- TODO add password check -->

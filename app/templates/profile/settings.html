@@ -1,22 +1,30 @@
-{% extends "base.html" %} {% block title %}Profile of {{ user.username
-}}{%endblock %} {% block css %} {%load static %}
+{% extends "base.html" %} {% block title %}Profile of {{
+user.username}}{%endblock %} {% block css %} {%load static %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 {% endblock %} {% block content %}
 <div class="container">
-  <div class="user__info">
-    <p>{{user.username}}</p>
-    <p>{{user.email}}</p>
+  <div class="user">
+    <div class="user__info">
+      <img
+        src="../../static/images/profile-circle.svg"
+        alt="user-avata"
+        width="120"
+        height="120"
+      />
+      <p>{{user.username}}</p>
+      <p>{{user.email}}</p>
+    </div>
+    <ul class="links__list">
+      <li class="link__item">
+        <a href="/profile/settings/update_email">Update email</a>
+      </li>
+      <li class="link__item">
+        <a href="/profile/settings/update_username">Update username</a>
+      </li>
+      <li class="link__item">
+        <a href="/profile/settings/update_password">Update password</a>
+      </li>
+    </ul>
   </div>
-  <ul class="links__list">
-    <li class="link__item">
-      <a href="/auth/update_email">Update email</a>
-    </li>
-    <li class="link__item">
-      <a href="/auth/update_username">Update username</a>
-    </li>
-    <li class="link__item">
-      <a href="/auth/update_password">Update password</a>
-    </li>
-  </ul>
 </div>
 {% endblock %}
