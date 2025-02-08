@@ -106,10 +106,10 @@ body{
   margin: 0 auto;
 }
 
-.main {
+/* .main {
   min-height: 100vh;
   height: 100%;
-}
+} */
 /* TODO: fix block main */
 
 .header,

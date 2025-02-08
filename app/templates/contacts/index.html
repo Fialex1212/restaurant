@@ -1,24 +1,37 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock %}
+{% block title %}Contact us{% endblock %}
 {% block css %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/contacts.css' %}" />
 {% endblock %}
 {% block content %}
 <div class="container">
-  <h1>Delivery Terms</h1>
-  <h2>Оставьте заявку, и мы вам перезвоним</h2>
+  <div class="contact">
+    <div class="contact__left">
+      <h2 class="title">Contact as</h2>
+      <p class="subtitle">Ask us anything or just say hi....</p>
 
-  {% if messages %}
-    {% for message in messages %}
-      <p style="color: green">{{ message }}</p>
-    {% endfor %}
-  {% endif %}
+      <a class="phone" href="tel:+1234567899">+1 234 567 899</a>
+      <p class="email" href="mailto:restaurant@help.com">restaurant@help.com</p>
+    </div>
+    <div class="contact__right">  
+      <form class="form" method="post">
+        {% csrf_token %}
+        
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+        <label class="input__wrapper">{{ form.name }}</label>
+        
+        <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+        <label class="input__wrapper">{{ form.phone }}</label>
 
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Отправить</button>
-  </form>
+        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+        <label class="input__wrapper">{{ form.message }}</label>
+        
+        <label class="captcha__wrapper">{{ form.captcha }}</label>
+        
+        <button class="form__button" type="submit">Send</button>
+    </form>
+    </div>
+  </div>
 </div>
 {% endblock %}

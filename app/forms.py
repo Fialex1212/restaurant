@@ -7,16 +7,37 @@ from .models import BookTabel
 
 class CallbackForm(forms.Form):
     name = forms.CharField(
-        label="Имя",
+        label="Full Name",
         max_length=100,
         required=True,
-        widget=forms.TextInput(attrs={"placeholder": "Введите ваше имя"}),
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter your name",
+                "class": "form__input form__full-name",
+            }
+        ),
     )
     phone = forms.CharField(
-        label="Телефон",
+        label="Phone number",
         max_length=15,
         required=True,
-        widget=forms.TextInput(attrs={"placeholder": "Введите ваш телефон"}),
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Enter your phone number",
+                "class": "form__input form__phone-number",
+            }
+        ),
+    )
+    message = forms.CharField(
+        label="Message",
+        max_length=120,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Max 120 symbols",
+                "class": "form__input form__message",
+            }
+        ),
     )
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
