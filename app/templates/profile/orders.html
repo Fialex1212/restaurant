@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Profile of {{ user.username }}{% endblock %}
+{% block css %}
+{%load static %}
+<link rel="stylesheet" href="{% static 'css/orders.css' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="title">My Orders</h2>
+    {% if orders %}
+      <ul class="orders__list">
+        {% for order in orders %}
+          <li class="order__item">
+            <p>Order ID: {{ order.id }}</p>
+            <p>Status: {{ order.status }}</p>
+            <p>Total Price: ${{ order.total_price }}</p>
+            <p>Date: {{ order.date }}</p>
+  
+            <h4>Dishes:</h4>
+            <ul>
+              {% for item in order.items.all %}
+              <li class="dish">
+                <a href="{% url 'dish_detail' item.dish.id %}">
+                  <div class="img__wrapper">
+                    <img
+                      class="dish__img"
+                      src="{{ item.dish.image.url }}"
+                      alt="{{ item.dish.title }}"
+                      width="150"
+                      height=""
+                    />
+                  </div>
+                  <div class="dish__info">
+                    <h3 class="dish__tilte">{{ item.dish.title }}</h3>
+                    <p>${{ item.dish.price }}</p>
+                    <p>{{ item.quantity }}</p>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You have no orders yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

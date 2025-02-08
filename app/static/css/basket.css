@@ -1,0 +1,28 @@
+.basket__list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product{
+    display: flex;
+}
+
+.product__rigth{
+    display: flex;
+    flex-direction: column;
+}
+
+.product__title{
+    margin-bottom: 50px;
+}
+
+.product__buttons{
+    display: flex;
+    gap: 40px;
+}
+
+.product__quantity{
+    display: flex;
+    gap: 20px;
+}

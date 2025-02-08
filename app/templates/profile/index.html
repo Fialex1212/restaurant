@@ -1,11 +1,28 @@
-{% extends "base.html" %}
-
-{% block title %}Profile of {{ username }}{% endblock %}
-
+{% extends "base.html" %} 
+{% block title %}Profile of {{ user.username }}{%endblock %} 
+{% block css %} 
+{%load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock %} 
 {% block content %}
 <div class="container">
-  <p>This is the Profile page.</p>
-  {{ username }}
-  <a href="/auth/logout">Logout</a>
+  <div class="user__info">
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+  </div>
+  <ul class="links__list">
+    <li class="link__item">
+      <a href="/profile/orders">My orders</a>
+    </li>
+    <li class="link__item">
+      <a href="/profile/settings">Settings</a>
+    </li>
+    <li class="link__item">
+      <a href="/delivery_trems">Delivery Trems</a>
+    </li>
+    <li class="link__item">
+      <a href="/auth/logout">Logout</a>
+    </li>
+  </ul>
 </div>
 {% endblock %}

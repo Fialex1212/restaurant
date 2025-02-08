@@ -11,7 +11,12 @@
         </li>
         {% for cat in categories %}
         <li>
-          <a class="category__title" href="{% url 'menu_by_category' cat.title %}"> {{ cat.title }} </a>
+          <a
+            class="category__title"
+            href="{% url 'menu_by_category' cat.title %}"
+          >
+            {{ cat.title }}
+          </a>
         </li>
         {% endfor %}
       </ul>
@@ -33,6 +38,15 @@
               <p>${{ dish.price }}</p>
             </div>
           </a>
+          <button
+            class="add-to-basket"
+            data-dish-id="{{ dish.id }}"
+            data-dish-title="{{ dish.title }}"
+            data-dish-price="{{ dish.price }}"
+            data-dish-image="{{ dish.image.url }}"
+          >
+            Add to Basket
+          </button>
         </li>
         {% endfor %} {% else %}
         <p>No dishes available for this category.</p>

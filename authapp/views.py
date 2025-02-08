@@ -43,8 +43,11 @@ def register_user(request):
             messages.error(request, "Passwords do not match.")
     return render(request, "./auth/register.html")
 
+
 @login_required(login_url="/auth/login")
 def logout_user(request):
     logout(request)
     messages.success(request, "Logged out successfully!")
     return redirect("login")
+
+

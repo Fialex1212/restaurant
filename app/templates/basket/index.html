@@ -1,35 +1,13 @@
-{% extends "base.html" %} 
-{% block title %}Home{% endblock %} 
-{% block css %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block css %}
 {%load static %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
-{% endblock %} 
-{% block content%}
+<link rel="stylesheet" href="{% static 'css/basket.css' %}" />
+{% endblock %} {% block content%}
 <div class="container">
-  <h1>Delivery trems</h1>
-  <p>
-    A restaurant manager plays a vital role in ensuring the smooth operation of
-    a dining establishment. They oversee all aspects of the restaurant, from
-    managing staff and coordinating schedules to ensuring excellent customer
-    service and maintaining high-quality food standards. The manager is the link
-    between the kitchen, dining area, and customers, ensuring everything runs
-    seamlessly. Key responsibilities include hiring, training, and supervising
-    staff to create a motivated team that delivers outstanding service. They
-    monitor inventory levels, manage supplier relationships, and ensure
-    compliance with health and safety regulations. A restaurant manager also
-    handles customer feedback, resolving complaints and ensuring guest
-    satisfaction to build a loyal clientele. Financial management is another
-    critical aspect, as the manager is responsible for tracking budgets,
-    managing expenses, and maximizing profits. They analyze daily operations,
-    optimize workflows, and implement marketing strategies to attract more
-    customers and increase revenue. In addition to operational duties, the
-    restaurant manager fosters a positive work environment, encouraging teamwork
-    and addressing challenges with professionalism. Their leadership and
-    problem-solving skills are essential for navigating the fast-paced nature of
-    the restaurant industry. A successful restaurant manager combines strong
-    organizational skills, culinary knowledge, and a passion for hospitality,
-    ensuring the restaurant thrives and provides memorable dining experiences.
-  </p>
+  <div id="basket">
+    <h3>Your Basket</h3>
+    <ul class="basket__list" id="basket-items"></ul>
+    <button onclick="checkout()">Checkout</button>
+  </div>
 </div>
 
 {% endblock %}

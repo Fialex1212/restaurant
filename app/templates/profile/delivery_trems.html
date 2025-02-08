@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block css %}
+{%load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %} {% block content%}
+<div class="container">
+  <h1>Delivery trems</h1>
+  <div>
+    Способи замовлення: На сайті; По телефону; Через сервіси: Glovo, Bolt Food.
+  </div>
+  <div>
+    Оплата: Готівкою кур`єру; Оплата карткою кур`єру; Оплата карткою на сайті.
+  </div>
+  <div>Як отримати замовлення Доставка кур'єром; Самовивіз Зона</div>
+  <div>
+    доставки: Доставка по Києву на суму від 1500 грн безкоштовна; Доставка по
+    Києву на суму до 1500 грн становить 100 грн; За межі Києва — 200грн.
+  </div>
+</div>
+
+{% endblock %}

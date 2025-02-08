@@ -1,5 +1,6 @@
 .menu__wrapper {
   display: flex;
+  justify-content: space-between;
 }
 
 .menu__categories {

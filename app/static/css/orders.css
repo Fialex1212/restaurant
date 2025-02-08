@@ -1,0 +1,19 @@
+.title{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.orders__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.order__item {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}

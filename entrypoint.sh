@@ -9,6 +9,7 @@ echo "PostgreSQL is up!"
 
 # Apply migrations
 echo "Applying database migrations..."
+python manage.py makemigrations
 python manage.py migrate
 
 # Create superuser if it doesn't exist
