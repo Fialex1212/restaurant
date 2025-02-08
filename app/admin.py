@@ -4,7 +4,8 @@ from .models import (
     CategoryOfDish,
     Dish,
     Order,
-    OrderItem
+    OrderItem, 
+    ContactUs
 )
 
 admin.site.register(BookTabel)
@@ -12,3 +13,4 @@ admin.site.register(CategoryOfDish)
 admin.site.register(Dish)
 admin.site.register(Order)
 admin.site.register(OrderItem)
+admin.site.register(ContactUs)

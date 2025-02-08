@@ -12,7 +12,7 @@ class CallbackForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter your name",
+                "placeholder": "Enter your Full Name",
                 "class": "form__input form__full-name",
             }
         ),
@@ -23,23 +23,22 @@ class CallbackForm(forms.Form):
         required=True,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Enter your phone number",
+                "placeholder": "Enter your Phone number",
                 "class": "form__input form__phone-number",
             }
         ),
     )
     message = forms.CharField(
         label="Message",
-        max_length=120,
         required=True,
-        widget=forms.TextInput(
+        widget=forms.Textarea(
             attrs={
-                "placeholder": "Max 120 symbols",
+                "placeholder": "Enter your Message",
                 "class": "form__input form__message",
             }
         ),
     )
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
+    # captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox)
 
 
 class BookingForm(forms.ModelForm):

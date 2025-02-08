@@ -1,6 +1,47 @@
+.hero {
+  position: relative;
+  background-image: url("../images/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100dvh;
+  margin-bottom: 50px;
+  filter: brightness(88%);
+}
+
+.button__wrapper,
+.button__wrapper > button {
+  cursor: pointer;
+}
+
+.hero__buttons {
+  width: 100%;
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.swiper__title {
+  font-size: 24px;
+  color: #331d2c;
+  margin-bottom: 20px;
+}
+
+.swiper__subtitle {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.swiper__subtitle-bold {
+  font-weight: 600;
+}
+
 .swiper {
   width: 100%;
-  height: 500px;
+  height: 300px;
   margin-bottom: 120px;
 }
 
@@ -11,6 +52,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .swiper-slide img {
@@ -20,61 +64,66 @@
   object-fit: cover;
 }
 
-.cards{
+.cards {
   margin-bottom: 70px;
 }
 
-.card__list{
+.card__list {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  gap: 30px;
 }
 
-.card__item{
+.card__item {
   max-width: 300px;
 }
 
-.card__item-img-wrapper{
+.card__item-img-wrapper {
   width: 100%;
   height: 200px;
-  background-color: #979797;/*delete when use img*/
-  display: flex;/*delete when use img*/
-  justify-content: center;/*delete when use img*/
-  align-items: center; /*delete when use img*/
   margin-bottom: 10px;
-}
-
-.card__item-img{
-  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 @media screen and (min-width: 768px) {
-  .card__list{
+  .card__list {
     display: flex;
     flex-direction: row;
+  }
+
+  .swiper {
+    height: 400px;
   }
 }
 
 @media screen and (min-width: 992px) {
-  .card__item{
+  .card__item {
     max-width: 400px;
   }
 
-  .card__item-img-wrapper{
+  .card__item-img-wrapper {
     height: 300px;
+  }
+
+  .swiper {
+    height: 500px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .card__item{
+  .card__item {
     max-width: 500px;
   }
 
-  .card__item-img-wrapper{
+  .card__item-img-wrapper {
     height: 400px;
+  }
+
+  .swiper {
+    height: 600px;
   }
 }

@@ -1,5 +1,4 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} 
-{% block css%}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block css%}
 {%load static %}
 <!-- Link Swiper's CSS -->
 <link
@@ -7,16 +6,52 @@
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
 />
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
-{% endblock %} 
-{% block content%}
+{% endblock %} {% block content%}
+
+<div class="hero">
+  <div class="container">
+    <ul class="hero__buttons">
+      <li class="button__wrapper">
+        <button class="hero__button">Book Table</button>
+      </li>
+      <li class="button__wrapper">
+        <a href="/menu" class="hero__button">View Menu</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <div class="container">
+  <h4 class="swiper__title">About Restaurant</h4>
+  <div class="swiper__subtitle">
+    <p>
+      <b class="swiper__subtitle-bold">Modern Chinese Cuisine</b> – the first
+      restaurant in Ukraine specializing in contemporary Chinese cuisine. This
+      enchanting place lets you feel like a true emperor as you savor authentic
+      Peking duck. Only traditional dim sum has the power to touch your heart.
+      Oriental noodles, exquisite wontons – and this is just the beginning of
+      the story.
+    </p>
+  </div>
+
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
-      <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
-      <div class="swiper-slide">Slide 4</div>
+      <div
+        class="swiper-slide"
+        style="background-image: url(../../static/images/slider-1.jpg)"
+      ></div>
+      <div
+        class="swiper-slide"
+        style="background-image: url(../../static/images/slider-2.jpg)"
+      ></div>
+      <div
+        class="swiper-slide"
+        style="background-image: url(../../static/images/slider-3.jpg)"
+      ></div>
+      <div
+        class="swiper-slide"
+        style="background-image: url(../../static/images/slider-4.jpg)"
+      ></div>
     </div>
     <div class="swiper-pagination"></div>
   </div>
@@ -24,25 +59,26 @@
   <div class="cards">
     <ul class="card__list">
       <li class="card__item">
-        <div class="card__item-img-wrapper">
-          Img <!-- delete when use img -->
-          <img class="card__item-img" src="" alt="">
-        </div>
+        <div
+          class="card__item-img-wrapper"
+          style="background-image: url(../../static/images/card-1.jpg)"
+        ></div>
         <p class="card__item-description">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
-          odit voluptate, dolore obcaecati corporis accusamus facere ut ex?
-          Eligendi.
+          <b>Authentic Experience:</b> Our chefs use traditional Chinese cooking
+          techniques to bring you the finest flavors, from hand-crafted dim sum
+          to perfectly roasted Peking duck.
         </p>
       </li>
       <li class="card__item">
-        <div class="card__item-img-wrapper">
-          Img <!-- delete when use img -->
-          <img class="card__item-img" src="" alt="">
-        </div>
+        <div
+          class="card__item-img-wrapper"
+          style="background-image: url(../../static/images/card-2.jpg)"
+        ></div>
         <p class="card__item-description">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
-          odit voluptate, dolore obcaecati corporis accusamus facere ut ex?
-          Eligendi.
+          <b>Elegant Atmosphere:</b>
+          A blend of modern design and Eastern aesthetics creates the perfect
+          setting for an unforgettable dining experience, whether for a casual
+          meal or a special occasion.
         </p>
       </li>
     </ul>

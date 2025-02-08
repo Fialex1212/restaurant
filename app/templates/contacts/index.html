@@ -1,10 +1,8 @@
-{% extends "base.html" %}
-{% block title %}Contact us{% endblock %}
-{% block css %}
-{% load static %}
+{% extends "base.html" %} 
+{% block title %}Contact us{% endblock %} 
+{% block css%} {% load static %}
 <link rel="stylesheet" href="{% static 'css/contacts.css' %}" />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
 <div class="container">
   <div class="contact">
     <div class="contact__left">
@@ -14,23 +12,39 @@
       <a class="phone" href="tel:+1234567899">+1 234 567 899</a>
       <p class="email" href="mailto:restaurant@help.com">restaurant@help.com</p>
     </div>
-    <div class="contact__right">  
+    <div class="contact__right">
       <form class="form" method="post">
         {% csrf_token %}
-        
-        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-        <label class="input__wrapper">{{ form.name }}</label>
-        
-        <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
-        <label class="input__wrapper">{{ form.phone }}</label>
 
-        <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+        <div class="name__input__wrapper">
+          <label class="input__wrapper">
+            <label for="{{ form.name.id_for_label }}"
+              >{{ form.name.label }}</label
+            >
+            {{ form.name }}</label
+          >
+
+          <label class="input__wrapper">
+            <label for="{{ form.phone.id_for_label }}"
+              >{{ form.phone.label }}</label
+            >
+            {{ form.phone }}</label
+          >
+        </div>
+
+        <label for="{{ form.message.id_for_label }}"
+          >{{ form.message.label }}</label
+        >
         <label class="input__wrapper">{{ form.message }}</label>
-        
-        <label class="captcha__wrapper">{{ form.captcha }}</label>
-        
+
+        <!-- <label class="captcha__wrapper">{{ form.captcha }}</label> -->
+        <!-- TODO fix recaptcha-->
+
         <button class="form__button" type="submit">Send</button>
-    </form>
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %} {% endif %}
+      </form>
     </div>
   </div>
 </div>

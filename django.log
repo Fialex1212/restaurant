@@ -2,3 +2,143 @@ WARNING 2025-02-08 14:53:35,144 basehttp "GET /auth/change_email HTTP/1.1" 404 8
 WARNING 2025-02-08 14:54:14,598 basehttp "GET /auth/change_email HTTP/1.1" 404 8126
 WARNING 2025-02-08 14:54:15,273 basehttp "GET /auth/change_email HTTP/1.1" 404 8126
 WARNING 2025-02-08 14:54:17,276 basehttp "GET /auth/change_email HTTP/1.1" 404 8126
+WARNING 2025-02-08 22:21:27,183 basehttp "GET /favicon.ico HTTP/1.1" 404 6196
+ERROR 2025-02-08 22:26:29,397 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/views.py", line 94, in contacts
+    return render(request, "./contacts/index.html", {"form": form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/usr/local/lib/python3.11/site-packages/django/template/base.py", line 573, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 4: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-02-08 22:26:30,419 basehttp "GET /contacts/ HTTP/1.1" 500 161261
+WARNING 2025-02-08 22:29:54,200 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:30:07,057 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:30:10,779 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:30:15,157 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:30:34,165 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:30:38,584 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:31:36,011 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:32:28,720 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:32:29,920 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:32:30,644 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:32:31,301 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:32:31,989 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:32:37,031 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:33:07,663 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:34:21,447 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:35:04,213 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:35:07,768 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:35:09,860 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:42:48,647 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:43:27,427 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:43:29,223 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:43:33,328 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:43:37,969 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+WARNING 2025-02-08 22:43:40,736 views Invalid form submission: <ul class="errorlist"><li>captcha<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+ERROR 2025-02-08 22:50:34,117 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/views.py", line 86, in contacts
+    message = form.changed_data["message"]
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+ERROR 2025-02-08 22:50:34,126 basehttp "POST /contacts/ HTTP/1.1" 500 62745
+ERROR 2025-02-08 22:51:13,795 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/views.py", line 86, in contacts
+    message = form.changed_data["message"]
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+ERROR 2025-02-08 22:51:13,802 basehttp "POST /contacts/ HTTP/1.1" 500 62745
+ERROR 2025-02-08 22:51:14,468 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/views.py", line 86, in contacts
+    message = form.changed_data["message"]
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+ERROR 2025-02-08 22:51:14,471 basehttp "POST /contacts/ HTTP/1.1" 500 62745
+ERROR 2025-02-08 22:51:15,970 log Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/app/views.py", line 86, in contacts
+    message = form.changed_data["message"]
+              ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+ERROR 2025-02-08 22:51:15,976 basehttp "POST /contacts/ HTTP/1.1" 500 62745

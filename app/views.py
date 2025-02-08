@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import CategoryOfDish, Dish, Order, OrderItem
+from .models import CategoryOfDish, Dish, Order, OrderItem, ContactUs
 from .forms import CallbackForm, BookingForm
 
 # LOGGER
@@ -83,11 +83,13 @@ def contacts(request):
         if form.is_valid():
             name = form.cleaned_data["name"]
             phone = form.cleaned_data["phone"]
-            messages.success(request, "Ваша заявка принята! Мы вам перезвоним.")
+            message = form.cleaned_data["message"]  
+            contact_us = ContactUs.objects.create(name=name, phone=phone, message=message)
+            messages.success(request, "Your request has been accepted! We will call you back.")
             logger.info(f"Callback request received: {name}, {phone}")
             return redirect("contacts")
         else:
-            messages.error(request, "Пожалуйста, исправьте ошибки в форме.")
+            messages.error(request, "Please, fix issues in form.")
             logger.warning(f"Invalid form submission: {form.errors}")
     else:
         form = CallbackForm()
