@@ -60,36 +60,61 @@
     </main>
     <footer class="footer">
       <div class="container">
-        <div class="header__inner">
-          <div class="logo">
-            <a href="/"> LOGO </a>
+        <div class="footer__container">
+          <div class="footer__newsletter">
+            <h2 class="newsletter__title">Subscribe To Our Newsletter</h2>
+            <form action="POST" class="newsletter__form">
+              <label class="newsletter__input-wrapper">
+                <input
+                  type="text"
+                  class="newsletter__input"
+                  placeholder="Enter Your Email"
+                  required
+                />
+              </label>
+              <button class="newsletter__submit" type="submit">
+                Subscribe
+              </button>
+            </form>
           </div>
-          <nav class="header__navbar">
-            <ul class="navbar__list">
-              <li class="list__item">
-                <a class="list__link" href="/">home</a>
-              </li>
-              <li class="list__item">
-                <a class="list__link" href="/menu">menu</a>
-              </li>
-              <li class="list__item">
-                <a class="list__link" href="/contacts">contacts</a>
-              </li>
-              {% if user.is_authenticated %}
-              <li class="list__item">
-                <a class="list__link" href="/profile">profile</a>
-              </li>
-              {% else %}
-              <li class="list__item">
-                <a class="list__link" href="/auth/login">login</a>
-              </li>
-              {% endif %}
-              <li class="list__item">
-                <a class="list__link" href="/basket">basket</a>
-              </li>
-            </ul>
+          <nav class="footer__navbar">
+            <div class="footer__navbar__left">
+              <h5 class="footer__title">OUR LINKS</h5>
+              <ul class="footer__list">
+                <li class="footer__item">
+                  <a href="/home" class="footer__link">Home</a>
+                </li>
+                <li class="footer__item">
+                  <a href="/menu" class="footer__link">Menu</a>
+                </li>
+                <li class="footer__item">
+                  <a href="/profile" class="footer__link">Profile</a>
+                </li>
+                <li class="footer__item">
+                  <a href="/basket" class="footer__link">Basket</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer__navbar__right">
+              <h5 class="footer__title">HELP CENTER</h5>
+              <ul class="footer__list">
+                <li class="footer__item">
+                  <a href="/faq" class="footer__link">FAQ</a>
+                </li>
+                <li class="footer__item">
+                  <a href="/delivery-trems" class="footer__link"
+                    >Delivery Terms</a
+                  >
+                </li>
+                <li class="footer__item">
+                  <a href="/contacts" class="footer__link">Contacts</a>
+                </li>
+              </ul>
+            </div>
           </nav>
-          <button id="openPopupBtn" class="popup__button">Book a table</button>
+          <div class="rights">
+            Copyright 2024 All rights reserved.
+          </div>
         </div>
       </div>
     </footer>

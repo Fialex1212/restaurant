@@ -19,7 +19,8 @@ urlpatterns = [
     path('profile/settings/update_email/', views.update_email, name='update_email'),
     path('profile/settings/update_username/', views.update_username, name='update_username'),
     path('profile/settings/update_password/', views.update_password, name='update_password'),
-    path("delivery_trems/", views.delivery_trems, name="delivery_trems"),
+    path("delivery-trems/", views.delivery_trems, name="delivery_trems"),
+    path("faq/", views.faq, name=""),
 
     path("submit-booking", views.book_table, name="submit_booking"),
     path("auth/", include("authapp.urls")),

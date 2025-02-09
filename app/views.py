@@ -129,6 +129,9 @@ def profile_settings(request):
 def delivery_trems(request):
     return render(request, "./profile/delivery_trems.html")
 
+def faq(request):
+    return render(request, "./profile/delivery_trems.html")
+
 
 def book_table(request):
     if request.method == "POST":

@@ -142,3 +142,13 @@ Traceback (most recent call last):
               ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
 TypeError: list indices must be integers or slices, not str
 ERROR 2025-02-08 22:51:15,976 basehttp "POST /contacts/ HTTP/1.1" 500 62745
+WARNING 2025-02-08 23:17:52,446 basehttp "GET /auth/update_email HTTP/1.1" 404 7892
+WARNING 2025-02-08 23:17:54,669 basehttp "GET /auth/update_email HTTP/1.1" 404 7892
+WARNING 2025-02-08 23:17:56,843 basehttp "GET /auth/update_email HTTP/1.1" 404 7892
+WARNING 2025-02-08 23:18:40,853 basehttp "GET /profile/update_email HTTP/1.1" 404 7087
+WARNING 2025-02-08 23:18:43,399 basehttp "GET /profile/update_email HTTP/1.1" 404 7087
+WARNING 2025-02-08 23:18:50,502 basehttp "GET /profile/update_email HTTP/1.1" 404 7087
+WARNING 2025-02-08 23:18:58,904 basehttp "GET /profile/update_username HTTP/1.1" 404 7096
+WARNING 2025-02-09 10:33:56,617 basehttp "GET /favicon.ico HTTP/1.1" 404 7060
+WARNING 2025-02-09 10:48:58,591 basehttp "GET /faq HTTP/1.1" 404 7036
+WARNING 2025-02-09 10:49:18,018 basehttp "GET /faq HTTP/1.1" 404 7279
