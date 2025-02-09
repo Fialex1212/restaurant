@@ -1,7 +1,15 @@
-.title{
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+.my__orders{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 120px;
+}
+
+.my__orders__title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 .orders__list {
@@ -10,10 +18,49 @@
 }
 
 .order__item {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
+
+.order__id{
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.info__list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.info__title{
+  font-size: 14px;
+  color: rgb(99, 99, 99);
+}
+
+.dish{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.img__wrapper{
+  margin-bottom: 10px;
+}
+
+.dish__info{
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+

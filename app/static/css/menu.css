@@ -1,6 +1,7 @@
 .menu__wrapper {
   display: flex;
-  justify-content: space-between;
+  gap: 50px;
+  padding-top: 120px;
 }
 
 .menu__categories {
@@ -17,6 +18,8 @@
 }
 
 .dishes__list {
+  max-width: 900px;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -27,6 +30,40 @@
   width: 300px;
   display: flex;
   flex-direction: column;
+}
+
+.categories__list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add__to__basket{
+  padding: 10px 0;
+}
+
+.categories__item,
+.add__to__basket {
+  background-color: #3f2e3e;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.categories__item:hover,
+.add__to__basket:hover {
+  background-color: #5e445b;
+  transition: 0.3s;
+}
+
+.category__title{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 10px;
 }
 
 .img__wrapper {
@@ -40,7 +77,8 @@
 
 .dish__img {
   max-width: 300px;
-  height: 300px;
+  max-height: 300px;
+  height: 100%;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -49,8 +87,18 @@
 
 .dish__info {
   display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .dish__title {
   font-size: 24px;
+  margin-bottom: 10px;
 }
+
+.dish__price{
+  font-size: 24px;
+}
+
+

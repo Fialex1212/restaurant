@@ -105,7 +105,7 @@ function renderBasket() {
                 <img
                     src="${item.image}"
                     alt="${item.title}"
-                    style="width: 150px; height: 150px; margin-right: 10px"
+                    class="product__img"
                 />
                 </div>
                 <div class="product__rigth">
@@ -116,7 +116,7 @@ function renderBasket() {
                     <p>${item.quantity}</p>
                     <button onclick="increaseQuantity('${item.id}')">+</button>
                     </div>
-                    <button onclick="removeFromBasket('${item.id}')">Remove</button>
+                    <button class="remove__button" onclick="removeFromBasket('${item.id}')">Remove</button>
                 </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@ function renderBasket() {
   }
 }
 
-document.querySelectorAll(".add-to-basket").forEach((button) => {
+document.querySelectorAll(".add__to__basket").forEach((button) => {
   button.addEventListener("click", function () {
     const dishId = this.getAttribute("data-dish-id");
     const dishTitle = this.getAttribute("data-dish-title");

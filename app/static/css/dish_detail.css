@@ -1,0 +1,57 @@
+.dish__detail__wrapper {
+  padding-top: 120px;
+}
+
+.dish__img {
+  max-width: 400px;
+  max-height: 400px;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.dish__detail {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.dish__info {
+  max-width: 500px;
+  width: 100%;
+}
+
+.dish__title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.add__to__basket {
+  padding: 10px 0;
+}
+
+.add__to__basket {
+  background-color: #3f2e3e;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add__to__basket:hover {
+  background-color: #5e445b;
+  transition: 0.3s;
+}
+
+@media screen and (min-width: 720px) {
+  .dish__detail {
+    flex-direction: row;
+    align-items: center;
+  }
+}

@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
-{% block title %}Profile of 
-{{ user.username}}
+{% block title %}
+Profile of  {{ user.username }}
 {%endblock %} 
 {% block css %} 
 {%load static %}
@@ -22,7 +22,7 @@
         <a href="/profile/settings">Settings</a>
       </li>
       <li class="link__item">
-        <a href="/delivery_trems">Delivery Trems</a>
+        <a href="/delivery-trems">Delivery Trems</a>
       </li>
       <li class="link__item">
         <a href="/auth/logout">Logout</a>

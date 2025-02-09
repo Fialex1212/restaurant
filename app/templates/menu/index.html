@@ -6,11 +6,11 @@
   <div class="menu__wrapper">
     <div class="menu__categories">
       <ul class="categories__list">
-        <li>
+        <li class="categories__item">
           <a class="category__title" href="{% url 'menu' %}"> All menu </a>
         </li>
         {% for cat in categories %}
-        <li>
+        <li class="categories__item">
           <a
             class="category__title"
             href="{% url 'menu_by_category' cat.title %}"
@@ -35,11 +35,11 @@
             </div>
             <div class="dish__info">
               <h3 class="dish__tilte">{{ dish.title }}</h3>
-              <p>${{ dish.price }}</p>
+              <p class="dish__price">${{ dish.price }}</p>
             </div>
           </a>
           <button
-            class="add-to-basket"
+            class="add__to__basket"
             data-dish-id="{{ dish.id }}"
             data-dish-title="{{ dish.title }}"
             data-dish-price="{{ dish.price }}"
