@@ -1,10 +1,12 @@
 const popup = document.getElementById("popup");
-const openPopupBtn = document.getElementById("openPopupBtn");
+const openPopupBtns = document.querySelectorAll(".openPopupBtn");
 const closePopupBtn = document.getElementById("closePopupBtn");
 
 // open popup
-openPopupBtn.addEventListener("click", () => {
-  popup.style.display = "block";
+openPopupBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    popup.style.display = "block";
+  });
 });
 
 // click by cross
@@ -175,3 +177,32 @@ function checkout() {
       console.error("Error:", error);
     });
 }
+
+const burgerMenu = document.getElementById("burger__menu");
+const navLinks = document.getElementById("nav__links");
+const closeButton = document.getElementById("close__menu");
+
+burgerMenu.addEventListener("click", (event) => {
+  event.stopPropagation();
+  navLinks.classList.toggle("active");
+});
+
+document.addEventListener("click", (event) => {
+  if (!navLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+    navLinks.classList.remove("active");
+  }
+});
+
+closeButton.addEventListener("click", () => {
+  navLinks.classList.remove("active");
+});
+
+navLinks.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    navLinks.classList.remove("active");
+  }
+});

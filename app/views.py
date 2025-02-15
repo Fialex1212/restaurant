@@ -130,7 +130,7 @@ def delivery_trems(request):
     return render(request, "./profile/delivery_trems.html")
 
 def faq(request):
-    return render(request, "./profile/delivery_trems.html")
+    return render(request, "./faq/faq.html")
 
 
 def book_table(request):

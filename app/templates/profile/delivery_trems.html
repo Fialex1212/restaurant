@@ -1,19 +1,34 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block css %}
 {%load static %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/delivery_trems.css' %}" />
 {% endblock %} {% block content%}
 <div class="container">
-  <h1>Delivery trems</h1>
-  <div>
-    Способи замовлення: На сайті; По телефону; Через сервіси: Glovo, Bolt Food.
-  </div>
-  <div>
-    Оплата: Готівкою кур`єру; Оплата карткою кур`єру; Оплата карткою на сайті.
-  </div>
-  <div>Як отримати замовлення Доставка кур'єром; Самовивіз Зона</div>
-  <div>
-    доставки: Доставка по Києву на суму від 1500 грн безкоштовна; Доставка по
-    Києву на суму до 1500 грн становить 100 грн; За межі Києва — 200грн.
+  <div class="delivery">
+    <h2 class="delivery__title">Delivery trems</h2>
+    <div class="delivery__card">
+      <p class="card__title">Способи замовлення:</p>
+      <p>На сайті</p>
+      <p>По телефону</p>
+      <p>Через сервіси: Glovo, Bolt Food</p>
+    </div>
+
+    <div class="delivery__card">
+      <p class="card__title">Оплата:</p>
+      <p>Готівкою кур`єру</p>
+      <p>Оплата карткою кур`єру</p>
+      <p>Оплата карткою на сайті</p>
+    </div>
+    <div class="delivery__card">
+      <p class="card__title">Як отримати замовлення:</p>
+      <p>Доставка кур'єром</p>
+      <p>Самовивіз Зона</p>
+    </div>
+    <div class="delivery__card">
+      <p class="card__title">Доставки:</p>
+      <p>Доставка по Києву на суму від 1500 грн безкоштовна</p>
+      <p>Доставка по Києву на суму до 1500 грн становить 100 грн</p>
+      <p>За межі Києва — 200грн</p>
+    </div>
   </div>
 </div>
 

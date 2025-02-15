@@ -1,0 +1,25 @@
+.delivery{
+    padding-top: 120px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 100%;
+}
+
+.delivery__title{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.delivery__card{
+    max-width: 300px;
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 20px;
+}
+
+.card__title{
+    font-size: 20px;
+    margin-bottom: 10px;
+}

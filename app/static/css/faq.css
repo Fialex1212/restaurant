@@ -1,0 +1,25 @@
+.accordion {
+  padding-top: 120px;
+  max-width: 500px;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+}
+
+details {
+  background-color: #3f2e3e;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+details > summary {
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+details > p {
+  padding: 5px 10px 10px 20px;
+  color: #fff;
+  font-size: 1.1em;
+}
