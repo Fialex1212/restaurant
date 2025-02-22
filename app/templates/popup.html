@@ -2,17 +2,17 @@
   <div class="popup-content">
     <span id="closePopupBtn" class="close-btn">&times;</span>
     <h3 class="popup__title">Book a Table</h3>
-    <form class="popup__form" action="/submit-booking" method="post">
+    <form class="popup__form" method="post">
       {% csrf_token %}
       <div class="field">
-        <label class="input__label">Name:</label>
+        <label class="field__label">Name:</label>
         <label class="input__wrapper"
           ><input class="input" type="text" id="name" name="name" required
         /></label>
       </div>
 
       <div class="field">
-        <label class="input__label">Phone Number (Ukraine):</label>
+        <label class="field__label">Phone Number (Ukraine):</label>
         <label class="input__wrapper">
           <input
           class="input"
@@ -27,21 +27,21 @@
       </div>
 
       <div class="field">
-        <label class="input__label" for="date">Date:</label>
+        <label class="field__label" for="date">Date:</label>
         <label class="input__wrapper"
           ><input class="input" type="date" id="date" name="date" required
         /></label>
       </div>
 
       <div class="field">
-        <label class="input__label" for="time">Time:</label>
+        <label class="field__label" for="time">Time:</label>
         <label class="input__wrapper"
           ><input class="input" type="time" id="time" name="time" required
         /></label>
       </div>
 
       <div class="field">
-        <label class="input__label" for="guests">Number of Guests:</label>
+        <label class="field__label" for="guests">Number of Guests:</label>
         <label class="input__wrapper">
           <input
             class="input"
@@ -53,8 +53,9 @@
         /></label>
       </div>
 
+
       <div class="field">
-        <label class="input__label">Comment:</label>
+        <label class="field__label">Comment:</label>
         <label class="input__wrapper"
           ><input class="input" type="text" id="comment" name="comment"
         /></label>
@@ -64,46 +65,3 @@
     </form>
   </div>
 </div>
-<script>
-  const phoneInput = document.getElementById("phone");
-
-  // Format the phone number as the user types
-  phoneInput.addEventListener("input", function (e) {
-    let value = e.target.value.replace(/\D/g, ""); // Remove non-digit characters
-    if (value.startsWith("380")) {
-      value = "+380" + value.slice(3); // Automatically add '+' symbol and 380 country code
-    } else if (value.startsWith("0")) {
-      value = "+380" + value.slice(1); // Handle cases where user types leading zero
-    }
-
-    // Limit the length to 13 characters (including +380)
-    if (value.length > 13) {
-      value = value.slice(0, 13);
-    }
-
-    // Format the phone number as +380 XX XXX XXXX
-    if (value.length > 4) {
-      value = value.slice(0, 4) + " " + value.slice(4);
-    }
-    if (value.length > 7) {
-      value = value.slice(0, 7) + " " + value.slice(7);
-    }
-    if (value.length > 11) {
-      value = value.slice(0, 11) + " " + value.slice(11);
-    }
-
-    e.target.value = value; // Set the formatted value back into the input
-  });
-
-  // Validate phone number on form submission
-  const form = document.querySelector("form");
-  form.addEventListener("submit", function (e) {
-    const phoneValue = phoneInput.value.replace(/\s+/g, ''); // Remove spaces for validation
-    const phonePattern = /^\+380\d{9}$/; // Regular expression to validate the Ukrainian phone number format
-
-    if (!phonePattern.test(phoneValue)) {
-      e.preventDefault();
-      alert("Please enter a valid Ukrainian phone number in the format +380XXXXXXXXX");
-    }
-  });
-</script>

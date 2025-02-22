@@ -187,18 +187,18 @@ def update_username(request):
             return redirect("profile-settings")
     return render(request, "./profile/update_username.html")
 
-
 @login_required(login_url="/auth/login")
 def update_password(request):
     if request.method == "POST":
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, form.user)
+            update_session_auth_hash(request, form.user) 
             messages.success(request, "Your password has been updated.")
             return redirect("profile-settings")
         else:
             messages.error(request, "Please correct the error below.")
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, "./profile/update_password.html")
+
+    return render(request, "./profile/update_password.html", {"form": form})

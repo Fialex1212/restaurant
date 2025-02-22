@@ -38,8 +38,11 @@ function addToBasket(dishId, title, price, image) {
   const existingDish = basket.find((item) => item.id === dishId);
 
   if (existingDish) {
-    existingDish.quantity += 1; // Increase quantity if item exists
-    alert(`${title} - ${existingDish.quantity} added to your basket`);
+    existingDish.quantity += 1;
+    showNotification(
+      "success",
+      `${title} - ${existingDish.quantity} added to your basket`
+    );
   } else {
     basket.push({
       id: dishId,
@@ -48,7 +51,7 @@ function addToBasket(dishId, title, price, image) {
       image: image,
       quantity: 1,
     });
-    alert(`${title} added to your basket`);
+    showNotification("success", `${title} added to your basket`);
   }
 
   updateBasket(basket);
@@ -150,32 +153,42 @@ document.addEventListener("DOMContentLoaded", renderBasket);
 
 function checkout() {
   const basket = getBasket();
-  alert("Proceeding to checkout with " + basket.length + " items.");
 
-  // Отправляем корзину на сервер через POST-запрос
+  if (basket.length === 0) {
+    showNotification("info", "Your basket is empty. Add items before checkout!");
+    return;
+  }
+
+  showNotification(
+    "success",
+    "Proceeding to checkout with " + basket.length + " items."
+  );
+
   fetch("/api/checkout/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     credentials: "include",
-    body: JSON.stringify({
-      basket: basket,
-    }),
+    body: JSON.stringify({ basket }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        return response.text().then((text) => {
+          throw new Error(`HTTP Error ${response.status}: ${text}`);
+        });
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.success) {
-        alert("Order placed successfully!");
+        showNotification("success", "Order placed successfully!");
         clearBasket();
-        window.location.href = "/profile/orders"; // Перенаправляем на страницу заказов
+        window.location.href = "/";
       } else {
-        alert("Error placing order: " + data.error);
+        showNotification("error", "Error placing order: " + data.error);
       }
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
 }
 
 const burgerMenu = document.getElementById("burger__menu");

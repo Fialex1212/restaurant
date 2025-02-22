@@ -1,33 +1,38 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block css %}
-{%load static %}
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+
+{% block css %}
+{% load static %}
 <link rel="stylesheet" href="{% static 'css/delivery_trems.css' %}" />
-{% endblock %} {% block content%}
+{% endblock %} 
+
+{% block content %}
 <div class="container">
   <div class="delivery">
-    <h2 class="delivery__title">Delivery trems</h2>
+    <h2 class="delivery__title">Delivery Terms</h2>
     <div class="delivery__card">
-      <p class="card__title">Способи замовлення:</p>
-      <p>На сайті</p>
-      <p>По телефону</p>
-      <p>Через сервіси: Glovo, Bolt Food</p>
+      <p class="card__title">Order Methods:</p>
+      <p>On the website</p>
+      <p>By phone</p>
+      <p>Through services: Glovo, Bolt Food</p>
     </div>
 
     <div class="delivery__card">
-      <p class="card__title">Оплата:</p>
-      <p>Готівкою кур`єру</p>
-      <p>Оплата карткою кур`єру</p>
-      <p>Оплата карткою на сайті</p>
+      <p class="card__title">Payment:</p>
+      <p>Cash to the courier</p>
+      <p>Card payment to the courier</p>
+      <p>Card payment on the website</p>
     </div>
     <div class="delivery__card">
-      <p class="card__title">Як отримати замовлення:</p>
-      <p>Доставка кур'єром</p>
-      <p>Самовивіз Зона</p>
+      <p class="card__title">How to Receive the Order:</p>
+      <p>Courier delivery</p>
+      <p>Self-pickup Zone</p>
     </div>
     <div class="delivery__card">
-      <p class="card__title">Доставки:</p>
-      <p>Доставка по Києву на суму від 1500 грн безкоштовна</p>
-      <p>Доставка по Києву на суму до 1500 грн становить 100 грн</p>
-      <p>За межі Києва — 200грн</p>
+      <p class="card__title">Delivery Fees:</p>
+      <p>Free delivery within Kyiv for orders over 1500 UAH</p>
+      <p>Delivery within Kyiv for orders up to 1500 UAH is 100 UAH</p>
+      <p>Outside Kyiv — 200 UAH</p>
     </div>
   </div>
 </div>
