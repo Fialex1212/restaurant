@@ -98,6 +98,33 @@ restaurant/
 └── requirements.txt
 ```
 
+## Screenshots
+
+### Home
+![Desktop app Screenshot](./images/home.jpg)
+
+### Book a table
+![Desktop app Screenshot](./images/book.jpg)
+
+### Contacts
+![Desktop app Screenshot](./images/contacts.jpg)
+
+### Profile
+![Desktop app Screenshot](./images/profile.jpg)
+
+### Basket
+![Desktop app Screenshot](./images/basket.jpg)
+
+### My orders
+![Desktop app Screenshot](./images/orders.jpg)
+
+### Logign
+![Desktop app Screenshot](./images/login.jpg)
+
+### Register
+![Desktop app Screenshot](./images/register.jpg)
+
+
 - `app/`: Contains the core application code, including models, views, templates, and static files.
 - `media/`: Houses user-uploaded media, such as images of dishes.
 - `restaurant/`: Contains project-level configurations and settings.
